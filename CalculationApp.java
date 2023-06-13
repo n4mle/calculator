@@ -3,32 +3,35 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class CalculationWindow extends JFrame {
+public class CalculationApp extends JFrame {
     private JLabel resultLabel;
 
-    public CalculationWindow() {
+    public CalculationApp() {
         setTitle("Calculation Program");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(300, 200);
         setLocationRelativeTo(null);
 
-        // Set the blue color scheme
-        Color blueColor = new Color(0, 153, 255);
-        Color lightBlueColor = new Color(153, 204, 255);
+        try {
+            // Set the Nimbus look and feel
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         JPanel panel = new JPanel(new GridLayout(4, 1));
-        panel.setBackground(blueColor);
+        panel.setBackground(new Color(0, 153, 255));
 
         JTextField num1Field = new JTextField();
-        num1Field.setBackground(lightBlueColor);
+        num1Field.setBackground(new Color(153, 204, 255));
         panel.add(num1Field);
 
         JTextField num2Field = new JTextField();
-        num2Field.setBackground(lightBlueColor);
+        num2Field.setBackground(new Color(153, 204, 255));
         panel.add(num2Field);
 
         JButton addButton = new JButton("Add");
-        addButton.setBackground(lightBlueColor);
+        addButton.setBackground(new Color(153, 204, 255));
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -38,7 +41,7 @@ class CalculationWindow extends JFrame {
         panel.add(addButton);
 
         JButton subtractButton = new JButton("Subtract");
-        subtractButton.setBackground(lightBlueColor);
+        subtractButton.setBackground(new Color(153, 204, 255));
         subtractButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -48,12 +51,7 @@ class CalculationWindow extends JFrame {
         panel.add(subtractButton);
 
         resultLabel = new JLabel();
-        resultLabel.setForeground(Color.WHITE);
         panel.add(resultLabel);
-
-        // Set the panel background color
-        panel.setOpaque(true);
-        panel.setBackground(blueColor);
 
         add(panel);
     }
@@ -86,7 +84,7 @@ class CalculationWindow extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                CalculationWindow window = new CalculationWindow();
+                CalculationApp window = new CalculationApp();
                 window.setVisible(true);
             }
         });
